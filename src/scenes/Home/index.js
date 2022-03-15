@@ -70,7 +70,7 @@ function Home() {
         )}
         label="Text to speech"
       />
-      <div className="y8">
+      <div className="y8 mt-2">
         <CardDisplay
           data={selectEntries(data)}
           isTtsenabled={isTtsenabled}
@@ -113,20 +113,21 @@ function CardDisplay({ data, isTtsenabled, mode = 'both' }) {
   const answer = question === from ? to : from
 
   useEffect(() => {
+    if (!isTtsenabled) return
+
     const msg = new SpeechSynthesisUtterance()
-    // msg.voiceURI = 'native'
     msg.volume = 1
     msg.rate = 0.75
     msg.text = revealed ? answer : question
     msg.lang = revealed ? question === from ? toLanguage : fromLanguage : question === from ? fromLanguage : toLanguage
     speechSynthesis.speak(msg)
-  }, [answer, question, from, toLanguage, fromLanguage, revealed])
+  }, [isTtsenabled, answer, question, from, toLanguage, fromLanguage, revealed])
 
   return (
     <Card
       onClick={handleReveal}
-      style={{ width: 256 + 128, height: 256 + 128, fontSize: '2rem' }}
-      className="y5 cursor-pointer no-select"
+      style={{ width: 'calc(min(calc(100vw - 32px), 384px))', height: 'calc(min(calc(100vw - 32px), 384px))', fontSize: '2rem' }}
+      className="y5 cursor-pointer no-select text-align-center"
     >
       {capitalize(question)}
       {revealed && (

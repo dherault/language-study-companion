@@ -1,10 +1,11 @@
 import { Link as RouterLink } from 'react-router-dom'
 import { AppBar, Container, Link, Toolbar, Typography } from '@mui/material'
+import TranslateIcon from '@mui/icons-material/Translate'
 
 function ApplicationLayout({ children }) {
 
   return (
-    <>
+    <div className="min-h-100vh background-neutral">
       <AppBar position="relative">
         <Toolbar>
           <Link
@@ -13,9 +14,7 @@ function ApplicationLayout({ children }) {
             to="/"
             underline="none"
           >
-            <Typography variant="h6">
-              Language Study Companion
-            </Typography>
+            <TranslateIcon />
           </Link>
           <Link
             color="inherit"
@@ -43,11 +42,11 @@ function ApplicationLayout({ children }) {
       </AppBar>
       <Container
         maxWidth="lg"
-        className="pt-2 pb-12"
+        className="pt-2 pb-12 px-2"
       >
         {children}
       </Container>
-    </>
+    </div>
   )
 }
 

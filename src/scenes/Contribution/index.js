@@ -46,6 +46,9 @@ function Contribution() {
       <Typography className="mt-2">
         That's it!
       </Typography>
+      <Typography className="mt-2">
+        Contact: dherault@gmail.com
+      </Typography>
     </>
   )
 }
