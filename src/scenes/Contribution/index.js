@@ -16,18 +16,35 @@ function Contribution() {
         <ol>
           <li>
             Create a
-            &nbsp;
             <a
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="mx-0h"
             >
               Github
             </a>
-            &nbsp;
             account.
           </li>
+          <li>
+            Click on the pen icon in the top right corner of
+            <a
+              href="https://github.com/dherault/language-study-companion/blob/main/src/data.js"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-0h"
+            >
+              this page
+            </a>
+            .
+          </li>
+          <li>
+            Submit your work for review.
+          </li>
         </ol>
+      </Typography>
+      <Typography className="mt-2">
+        That's it!
       </Typography>
     </>
   )

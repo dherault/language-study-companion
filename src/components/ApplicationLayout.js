@@ -20,9 +20,20 @@ function ApplicationLayout({ children }) {
           <Link
             color="inherit"
             component={RouterLink}
-            to="/contribution"
+            to="/"
             underline="none"
             className="ml-4"
+          >
+            <Typography>
+              Study
+            </Typography>
+          </Link>
+          <Link
+            color="inherit"
+            component={RouterLink}
+            to="/contribution"
+            underline="none"
+            className="ml-2"
           >
             <Typography>
               How to contribute
