@@ -131,6 +131,7 @@ function CardDisplay({ data, isTtsenabled, mode = 'both' }) {
     msg.rate = 0.75
     msg.text = revealed ? answer : question
     msg.lang = revealed ? question === from ? toLanguage : fromLanguage : question === from ? fromLanguage : toLanguage
+    msg.voice = speechSynthesis.getVoices().find(voice => voice.lang === msg.lang)
     speechSynthesis.speak(msg)
   }, [isTtsenabled, answer, question, from, toLanguage, fromLanguage, revealed])
 
