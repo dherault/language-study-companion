@@ -9,8 +9,8 @@ export default [
         _: [
           {
             name: 'Basic vocabulary',
-            from: 'fi',
-            to: 'en',
+            from: 'fi-FI',
+            to: 'en-US',
             entries: {
               opettaja: 'teacher',
               suomi: 'finland',
@@ -22,8 +22,8 @@ export default [
           },
           {
             name: 'Greetings',
-            from: 'fi',
-            to: 'en',
+            from: 'fi-FI',
+            to: 'en-US',
             entries: {
               'hei, moi, terve': 'hello',
               'hyvää huomenta': 'good morning',
@@ -37,8 +37,8 @@ export default [
           },
           {
             name: 'Colors',
-            from: 'fi',
-            to: 'en',
+            from: 'fi-FI',
+            to: 'en-US',
             entries: {
               punainen: 'red',
               vihreä: 'green',
@@ -56,8 +56,8 @@ export default [
           },
           {
             name: 'Numbers',
-            from: 'fi',
-            to: 'en',
+            from: 'fi-FI',
+            to: 'en-US',
             entries: {
               nolla: 'zero',
               yksi: 'one',
