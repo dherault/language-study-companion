@@ -7,6 +7,7 @@ import { CssBaseline } from '@mui/material'
 
 import ApplicationLayout from './components/ApplicationLayout'
 import Home from './scenes/Home'
+import Contribution from './scenes/Contribution'
 
 function App() {
   return (
@@ -20,6 +21,15 @@ function App() {
             element={(
               <ApplicationLayout>
                 <Home />
+              </ApplicationLayout>
+            )}
+          />
+          <Route
+            exact
+            path="/contribution"
+            element={(
+              <ApplicationLayout>
+                <Contribution />
               </ApplicationLayout>
             )}
           />

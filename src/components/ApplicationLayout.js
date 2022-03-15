@@ -17,6 +17,17 @@ function ApplicationLayout({ children }) {
               Language Study Companion
             </Typography>
           </Link>
+          <Link
+            color="inherit"
+            component={RouterLink}
+            to="/contribution"
+            underline="none"
+            className="ml-4"
+          >
+            <Typography>
+              How to contribute
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <Container
