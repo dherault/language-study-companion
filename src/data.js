@@ -1,3 +1,5 @@
+// TODO: instructions
+
 export default [
   {
     name: 'finnishteacher.fi',
@@ -16,6 +18,21 @@ export default [
               vanäjä: 'russia',
               vuotta: 'years',
               metsää: 'forest',
+            },
+          },
+          {
+            name: 'Greetings',
+            from: 'fi',
+            to: 'en',
+            entries: {
+              'hei, moi, terve': 'hello',
+              'hyvää huomenta': 'good morning',
+              'hyvää päivää': 'good morning',
+              'hyvää iltaa': 'good evening',
+              'hyvää yötä': 'good night',
+              'hei hei, moi moi, terve terve': 'bye bye',
+              nähdään: 'see you',
+              näkemiin: 'bye',
             },
           },
           {

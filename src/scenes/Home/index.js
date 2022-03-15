@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { TreeItem, TreeView } from '@mui/lab'
-import { Button, Card, Checkbox } from '@mui/material'
+import { Button, Card, Checkbox, FormControlLabel, Switch } from '@mui/material'
+import SwapVertIcon from '@mui/icons-material/SwapVert'
 
 import data from '../../data'
 
 function Home() {
   const allNames = data.map(item => getChildrenNames(item)).flat()
 
+  const [isTtsenabled, setIsTtsEnabled] = useState(true)
   const [open, setOpen] = useState(false)
   const [selectedNames, setSelectedNames] = useState(allNames)
 
@@ -59,24 +61,38 @@ function Home() {
           {createTreeItems(data)}
         </TreeView>
       </div>
+      <FormControlLabel
+        control={(
+          <Switch
+            checked={isTtsenabled}
+            onChange={event => setIsTtsEnabled(event.target.checked)}
+          />
+        )}
+        label="Text to speech"
+      />
       <div className="y8">
-        <CardDisplay data={selectEntries(data)} />
+        <CardDisplay
+          data={selectEntries(data)}
+          isTtsenabled={isTtsenabled}
+        />
       </div>
     </>
   )
 }
 
-function CardDisplay({ data, mode = 'both' }) {
+function CardDisplay({ data, isTtsenabled, mode = 'both' }) {
   const [revealed, setRevealed] = useState(false)
-  const [[from, to], setCard] = useState(pick())
+  const [[from, to, fromLanguage, toLanguage], setCard] = useState(pick())
 
   function pick() {
     if (data.length === 0) {
       return ['Please select a lesson', 'Please select a lesson']
     }
-    const entries = Object.entries(data[Math.floor(Math.random() * data.length)].entries)
 
-    return entries[Math.floor(Math.random() * entries.length)]
+    const set = data[Math.floor(Math.random() * data.length)]
+    const entries = Object.entries(set.entries)
+
+    return [...entries[Math.floor(Math.random() * entries.length)], set.from, set.to]
   }
 
   function capitalize(text) {
@@ -96,13 +112,27 @@ function CardDisplay({ data, mode = 'both' }) {
   const question = useMemo(() => mode === 'both' ? Math.random() > 0.5 ? from : to : mode === 'from' ? from : to, [from, to, mode])
   const answer = question === from ? to : from
 
+  useEffect(() => {
+    const msg = new SpeechSynthesisUtterance()
+    // msg.voiceURI = 'native'
+    msg.volume = 1
+    msg.rate = 0.75
+    msg.text = revealed ? answer : question
+    msg.lang = revealed ? question === from ? toLanguage : fromLanguage : question === from ? fromLanguage : toLanguage
+    speechSynthesis.speak(msg)
+  }, [answer, question, from, toLanguage, fromLanguage, revealed])
+
   return (
     <Card
       onClick={handleReveal}
       style={{ width: 256 + 128, height: 256 + 128, fontSize: '2rem' }}
-      className="x5 cursor-pointer no-select"
+      className="y5 cursor-pointer no-select"
     >
-      {capitalize(revealed ? answer : question)}
+      {capitalize(question)}
+      {revealed && (
+        <SwapVertIcon className="my-4" />
+      )}
+      {revealed ? capitalize(answer) : ''}
     </Card>
   )
 }
